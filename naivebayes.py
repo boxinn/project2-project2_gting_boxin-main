@@ -47,7 +47,7 @@ def naivebayes(x, y, x1):
                 else : sum_n=sum_n+1
         logg[i]=np.log((sum_p/(sum+1)+1)/((sum_n/sum+1)+1))
 
-    logratio=logg
+    logratio=logg.reshape(1,-1)
     return logratio
 
 
