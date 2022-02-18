@@ -37,7 +37,7 @@ def naivebayes(x, y, x1):
 
     sum = sum_p = sum_n = 0
     for i in range(0, n):
-        if X[:, i] == X1:
+        if X[:, i].reshape(-1,1) == X1:
             sum = sum + 1
             if y[i] == 1:
               sum_p = sum_p + 1
