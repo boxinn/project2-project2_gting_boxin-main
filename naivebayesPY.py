@@ -42,7 +42,7 @@ def naivebayesPY(x, y):
     plus=0
     minus=0
 
-    y1=Y.reshape(-1,1)
+    y1=Ynew.reshape(-1,1)
     for i in range (0,n):
         if y1[i]==1:
             plus=plus+1
