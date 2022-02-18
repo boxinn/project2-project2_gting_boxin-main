@@ -23,18 +23,6 @@ def naivebayes(x, y, x1):
 # =============================================================================
 
 
-    d1,n1=np.shape(x)
-    sum=sum_p=sum_n=0
-    for i in range(0,n1):
-        if x[:,i]==x1:
-            sum=sum+1
-            if y[i]==1:
-                sum_p=sum_p+1
-            else:sum_n=sum_n+1
-    p1=sum_p/sum
-    p2=sum_n/sum
-    logratio=np.log(p1/p2)
-
     # Convertng input matrix x and x1 into NumPy matrix
     # input x and y should be in the form: 'a b c d...; e f g h...; i j k l...'
     X = np.matrix(x)
@@ -45,6 +33,17 @@ def naivebayes(x, y, x1):
     
 # =============================================================================
 # fill in code here
-    
+
+    sum = sum_p = sum_n = 0
+    for i in range(0, n):
+       if X[:, i] == X1:
+           sum=sum+1
+           if y[i]==1:sum_p=sum_p+1
+           else: sum_n=sum_n+1
+
+
+    p1 = sum_p / sum
+    p2 = sum_n / sum
+    logratio = np.log(p1 / p2)
     return logratio
 # =============================================================================
