@@ -39,7 +39,7 @@ def naivebayes(x, y, x1):
         sum=sum_p=sum_n=0
 
         for j in range(0,n):
-            if X1[i]==X[d,n]:
+            if X1[i]==X[i,j]:
                 sum=sum+1
                 if y[i]==1: sum_p=sum_p+1
                 else : sum_n=sum_n+1
