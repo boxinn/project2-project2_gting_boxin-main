@@ -44,6 +44,6 @@ def naivebayes(x, y, x1):
 
     p1 = sum_p / sum
     p2 = sum_n / sum
-    logratio = np.log(p1 / p2)
+    logratio = np.log(p1/p2).all
     return logratio
 # =============================================================================
