@@ -18,17 +18,7 @@ def naivebayesPY(x, y):
     # pos: probability p(y=1)
     # neg: probability p(y=-1)
     #
-    plus=0
-    minus=0
-    d1,n1=np.shape(x)
-    y1=y.reshape(-1,1)
-    for i in range (0,n1):
-        if y1[i]==1:
-            plus=plus+1
-        else:
-            minus=minus+1
-    pos=plus/n1
-    neg=minus/n1
+
     # Convertng input matrix x and y into NumPy matrix
     # input x and y should be in the form: 'a b c d...; e f g h...; i j k l...'
     X = np.matrix(x)
@@ -49,5 +39,15 @@ def naivebayesPY(x, y):
     d,n = Xnew.shape
     
     ## fill in code here
-    
+    plus=0
+    minus=0
+
+    y1=Y.reshape(-1,1)
+    for i in range (0,n):
+        if y1[i]==1:
+            plus=plus+1
+        else:
+            minus=minus+1
+    pos=plus/n
+    neg=minus/n
     return pos,neg
