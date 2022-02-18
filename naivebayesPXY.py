@@ -28,10 +28,10 @@ def naivebayesPXY(x, y):
     for i in range(0,n1):
         if y1[i]==1:
             ft1=ft1+x[:,i].reshape(-1,1)
-            pe=p+1
+            pe=pe+1
         else:
             ft2=ft2+x[:,i].reshape(-1,1)
-            n=ne+1
+            ne=ne+1
     posprob=ft1/pe
     negprob=ft2/ne
 
