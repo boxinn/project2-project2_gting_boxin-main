@@ -35,7 +35,20 @@ def naivebayes(x, y, x1):
 # =============================================================================
 # fill in code here
 
+    sum = sum_p = sum_n = 0
+    for i in range(0, n):
+        if X[:, i] == X1:
+            sum = sum + 1
+            if y[i] == 1:
+              sum_p = sum_p + 1
+            else:
+              sum_n = sum_n + 1
 
+        p1 = sum_p / sum + 1
+        p2 = sum_n / sum + 1
+        logratio = np.log(p1 / p2)
+    return logratio
+'''
     logg=np.zeros(d).reshape(-1,1)
     for i in range(0,d):
         sum=sum_p=sum_n=0
@@ -46,12 +59,11 @@ def naivebayes(x, y, x1):
                 if y[j]==1: sum_p=sum_p+1
                 else : sum_n=sum_n+1
         logg[i]=np.log((sum_p/(sum+1)+1)/((sum_n/sum+1)+1))
-
     logratio=logg.reshape(1,-1)
     return logratio
 
 
-
+'''
 
 
 
