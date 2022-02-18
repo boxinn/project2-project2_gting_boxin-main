@@ -12,6 +12,7 @@ def naivebayes(x, y, x1):
 # =============================================================================
 #function logratio = naivebayes(x,y,x1);
 #
+
 #Computation of log P(Y|X=x1) using Bayes Rule
 #Input:
 #x : n input vectors of d dimensions (dxn)
@@ -33,7 +34,25 @@ def naivebayes(x, y, x1):
     
 # =============================================================================
 # fill in code here
+    logg=np.zeros(d).reshape(-1,1)
+    for i in range(0,d):
+        sum=sum_p=sum_n=0
 
+        for j in range(0,n):
+            if X1[i]==X[d,n]:
+                sum=sum+1
+                if y[i]==1: sum_p=sum_p+1
+                else : sum_n=sum_n+1
+        logg[d]=np.log((sum_p/sum)/(sum_n/sum))
+
+    logratio=logg
+    return logratio
+
+
+
+
+
+'''
     sum = sum_p = sum_n = 0
     for i in range(0, n):
        if X[:, i] == X1:
@@ -44,6 +63,7 @@ def naivebayes(x, y, x1):
 
     p1 = sum_p / sum
     p2 = sum_n / sum
-    logratio = np.log(p1/p2).all()
-    return logratio
+    logratio = np.log(p1/p2)
+'''
+
 # =============================================================================
