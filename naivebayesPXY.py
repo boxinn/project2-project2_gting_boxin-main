@@ -23,17 +23,17 @@ def naivebayesPXY(x, y):
     d1,n1=np.shape(x)
     ft1=np.zeros(d1).reshape(-1,1)
     ft2=ft1
-    p=n=0
+    pe=ne=0
     y1=y.reshape(-1,1)
     for i in range(0,n1):
         if y1[i]==1:
             ft1=ft1+x[:,i].reshape(-1,1)
-            p=p+1
+            pe=p+1
         else:
             ft2=ft2+x[:,i].reshape(-1,1)
-            n=n+1
-    posprob=ft1/p
-    negprob=ft2/n
+            n=ne+1
+    posprob=ft1/pe
+    negprob=ft2/ne
 
 
     # Convertng input matrix x and y into NumPy matrix
