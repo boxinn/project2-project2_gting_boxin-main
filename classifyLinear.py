@@ -26,7 +26,7 @@ def classifyLinear(x, w, b):
             preds[i]=1
         else: preds[i]=-1
 
-
+    preds=preds.reshape(1,-1)
 
     # Convertng input matrix x and x1 into NumPy matrix
     # input x and y should be in the form: 'a b c d...; e f g h...; i j k l...'
