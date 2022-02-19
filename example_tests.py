@@ -9,20 +9,24 @@ import sys
 from genTrainFeatures import genTrainFeatures
 from naivebayesPY import naivebayesPY
 from naivebayesPXY import naivebayesPXY
+# for test import something dont belong to this file originally
+from naivebayesCL import naivebayesCL
+from classifyLinear import classifyLinear
 
-def example_tests():  
+
+def example_tests():
 # =============================================================================
 # function [r, ok, s]=example_tests()
-# 
+#
 # Tests the functions from homework assignment 0
 # Please make sure that the error statements are instructive.
-# 
+#
 # Output:
 # r= The number of tests that failed
 # ok= The number of tests that passed
 # s= statement describing the failed test (s={} if all succeed)
 # =============================================================================
-    
+
     # Put in any seed below
     random.seed(31415926535)
     # initial outputs
@@ -44,10 +48,10 @@ def example_tests():
 
     if failtest:
         r = r+1
-        s += 'Failed Test 1 naivebayesPY: Probabilities of P(Y) do not sum to 1.\n' + addon + '\n'
+        s.append('Failed Test 1 naivebayesPY: Probabilities of P(Y) do not sum to 1.\n' + addon + '\n')
     else:
         ok=ok+1
-        
+
     print('Completed Test 1')
 
     y=np.matrix([-1, 1])
@@ -69,7 +73,7 @@ def example_tests():
 
     if failtest:
         r = r + 1
-        s += 'Failed Test 2 naivebayesPXY: The calculation of P(Y) seems incorrect.\n' + addon + '\n'
+        s.append('Failed Test 2 naivebayesPXY: The calculation of P(Y) seems incorrect.\n' + addon + '\n')
     else:
         ok=ok+1
     print('Completed Test 2')
@@ -88,23 +92,40 @@ def example_tests():
     except:
         failtest = True
         addon = traceback.format_exc()
-        
+
     if failtest:
         r = r+1
-        s += 'Failed Test 3: The calculation of P(X|Y) seems incorrect.\n' + addon + '\n'
+        s.append('Failed Test 3: The calculation of P(X|Y) seems incorrect.\n' + addon + '\n')
     else:
         ok=ok+1
     print('Finished Test 3')
-    
+
 #    Tests 4~8 are testing about the naivebayesPXY function.
 #    Some are sanity tests that the function is returning reasonable answers.
 #    Some are making sure they are correct on small cases
-    
+
 #    Tests 9 is on naivebayes
-    
+
 #    Tests 10 is on naivebayesCL
-    
-    
+
+
     percentage=ok/(r+ok)*100;
     return r,ok,s
 
+if __name__ == '__main__':
+    failed,ok,msgs = example_tests()
+    print("Number of failed example tests: "+str(failed))
+    print("Number of passed example tests: "+str(ok))
+    if len(msgs):
+        failMsg = 'Unfortunately, you failed %d test(s) on this evaluation: \n\n' % len(msgs)
+        for j in range(0,len(msgs)):
+            print(msgs[j])
+    print("\nNote: we only implemented 3 out of 12 tests for you. Check the inline documentation for what the other tests do and implement them yourself!")
+
+#for test error
+
+x,y=genTrainFeatures()
+w,b=naivebayesCL(x,y)
+preds=classifyLinear(x,w,b)
+trainingerror=np.sum(preds)/(y.shape[1])
+print(trainingerror)
