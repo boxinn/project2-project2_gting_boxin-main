@@ -127,5 +127,12 @@ if __name__ == '__main__':
 x,y=genTrainFeatures()
 w,b=naivebayesCL(x,y)
 preds=classifyLinear(x,w,b)
-trainingerror=np.sum(preds)/(y.shape[1])
+preds=preds.reshape(-1,1)
+y=y.reshape(-1,1)
+d,n=np.shape(x)
+aa=0
+
+for i in range (0,n):
+    if y[i]==preds[i]: aa=aa+1
+trainingerror=np.sum(aa)/(n)
 print(trainingerror)
