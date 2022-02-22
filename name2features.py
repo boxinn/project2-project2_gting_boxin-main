@@ -10,20 +10,20 @@ def name2features(name):
     But every name must generate the same length feature. 
     """
     
-    d = 833 # number of hashing buckets origin is 128
+    d = 11033 # number of hashing buckets origin is 128
     v = np.zeros(d)
     name=name.lower() 
     
     # hash prefixes & suffixes - alexander -> [prefixa, prefixal, prefixale, suffixr, suffixer, suffixder]
     
-    prefix_max = 39  #origin is 3
+    prefix_max = 19  #origin is 3
     for m in range(prefix_max):
         prefix_string='prefix'+name[0:min(m+1,len(name))]
         random.seed(prefix_string)
         prefix_index = int(random.randint(0,d-1))
         v[prefix_index] = 1
     
-    suffix_max = 33  #origin is 3
+    suffix_max = 23  #origin is 3
     for m in range(suffix_max):
         suffix_string='suffix'+name[-1:-min(m+2,len(name)+1):-1]
         random.seed(suffix_string)
