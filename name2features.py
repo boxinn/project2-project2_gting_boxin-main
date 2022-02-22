@@ -10,7 +10,7 @@ def name2features(name):
     But every name must generate the same length feature. 
     """
     
-    d = 539 # number of hashing buckets origin is 128
+    d = 833 # number of hashing buckets origin is 128
     v = np.zeros(d)
     name=name.lower() 
     
